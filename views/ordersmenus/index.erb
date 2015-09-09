@@ -1,0 +1,32 @@
+<h2>menus</h2>
+
+<a class="btn" href="/order/new">Order</a>
+
+<div class="menus">
+  <% @menus.each do |menu| %>
+  <div class="row">
+    <img src="<%= menu.photo_url %>" alt="<%= menu.name %> photo">
+    <ul>
+      <li>
+        <h2>
+          <a href="/menus/<%= menu.id %>">
+            <%= menu.name %>
+          </a>
+        </h2>
+      </li>
+      <li>
+        <a href="/menus/<%= menu.id %>/edit">
+          Edit
+        </a>
+      </li>
+      <li>
+        <li>
+          <form method="/menus/<%= menu.id %>/delete" action="post">
+            <button>Delete</button>
+          </form>
+        </li>
+      </li>
+    </ul>
+  </div>
+  <% end %>
+</div>

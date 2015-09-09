@@ -1,0 +1,14 @@
+<h2>Edit Order(s)</h2>
+
+<form action='/order/<%= "#{@order.id}" %>' method="post">
+  <label for="order[name]">Name:</label>
+  <input name="order[name]" value='<%= "#{@order.name}" %>'>
+
+  <label for="order[photo_url]">Photo URL:</label>
+  <input name="order[photo_url]" value='<%= "#{@order.photo_url}" %>'>
+
+  <label for="order[price]">Price:</label>
+  <input name="order[price]" value='<%= "#{@order.price}" %>'>
+
+  <input type="submit" value="Create">
+</form>
