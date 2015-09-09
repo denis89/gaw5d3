@@ -10,19 +10,19 @@ class Order < Sinatra::Base
   
   # index
   get '/menu' do
-    @menus = Order.all
+    @menus = Orders.all
     erb(:"menu/index")
   end
 
-  #new -> Order in this case
-  get '/order/new' do
-  @menu = Order.new
-  erb(:"order/new")
+  #new -> Orders in this case
+  get '/Orders/new' do
+  @menu = Orders.new
+  erb(:"Orders/new")
   end
   
   # create
-  post '/order' do
-  @order = Order.new(params[:menu])
+  post '/Orders' do
+  @Orders = Orders.new(params[:menu])
   if @menu.save
     redirect("/menu/#{@menu.id}")
   else 
@@ -32,20 +32,20 @@ class Order < Sinatra::Base
 
 
   # show
-  get '/order/:id' do
-  @menu = Order.find(params[:id])    
+  get '/Orders/:id' do
+  @menu = Orders.find(params[:id])    
   erb(:"menu/show")
   end
 
   # edit 
-  get 'order/:id/edit' do
-    @menu = Order.find(params[:id])
+  get 'Orders/:id/edit' do
+    @menu = Orders.find(params[:id])
     erb(:"menu/edit")
   end
 
   #update
-  put '/order/:id' do
-    @menu = Order.find(params[:id])
+  put '/Orders/:id' do
+    @menu = Orders.find(params[:id])
     if @menu.update_attributes(params[:menu])
       redirect ("/menu/#{menu.id}")
     else 
@@ -54,9 +54,8 @@ class Order < Sinatra::Base
   end
 
   #delete
-  delete '/order/:id/delete'
-  do
-    @menu = Order.find(params[:id])
+  delete '/Orders/:id/delete' do
+    @menu = Orders.find(params[:id])
     if @menu.destroy
       redirect('/menu')
     else 
